@@ -89,7 +89,6 @@ for i, feature in enumerate(feature_names):
 
 # Make prediction
 prediction = model.predict([input_features])
-prediction_proba = model.predict_proba([input_features])
 
 st.header("Prediction Results")
 if prediction[0] == 0:
@@ -100,11 +99,4 @@ else:
     confidence = prediction_proba[0][1]
 
 st.write(f"**Confidence:** {confidence:.2%}")
-
-# Display prediction probabilities
-st.subheader("Prediction Probabilities")
-prob_df = pd.DataFrame({
-    'Class': target_names,
-    'Probability': prediction_proba[0]
-})
-st.bar_chart(prob_df.set_index('Class')) 
+ 
